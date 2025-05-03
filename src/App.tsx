@@ -6,6 +6,7 @@ import { createClient } from '@supabase/supabase-js';
 import Promo from './promo'; // Assuming you have a Promo.js or Promo.tsx
 
 
+
 // Initialize Supabase client
 const supabase = createClient(
   'https://sneynasuzdckcnimehdd.supabase.co',
