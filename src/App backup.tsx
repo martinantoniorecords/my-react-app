@@ -41,11 +41,11 @@ function ContactForm() {
 
   return (
     <div style={{ maxWidth: 480, margin: '2rem auto', padding: '1rem' }}>
-      <h2>Контакти</h2>
+      <h2>Contact Me</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input name="name" placeholder="Име" required className="w-full p-2 border rounded" />
-        <input name="email" type="email" placeholder="Имейл" required className="w-full p-2 border rounded" />
-        <textarea name="message" placeholder="Съобщение" required className="w-full p-2 border rounded" />
+        <input name="name" placeholder="Your name" required className="w-full p-2 border rounded" />
+        <input name="email" type="email" placeholder="Your email" required className="w-full p-2 border rounded" />
+        <textarea name="message" placeholder="Your message" required className="w-full p-2 border rounded" />
         <button
           type="submit"
           className="bg-green-600 text-white px-4 py-2 rounded"
@@ -53,8 +53,8 @@ function ContactForm() {
         >
           {status === 'sending' ? 'Sending...' : 'Send Message'}
         </button>
-        {status === 'sent' && <p className="text-green-500">Съобщение изпратено! 🚀</p>}
-        {status === 'error' && <p className="text-red-500">Грешка при пращане. Опитай отново.</p>}
+        {status === 'sent' && <p className="text-green-500">Message sent! 🚀</p>}
+        {status === 'error' && <p className="text-red-500">Error sending. Try again.</p>}
       </form>
     </div>
   );
@@ -104,39 +104,34 @@ function SingingLessonsPage() {
 }
 
 // Songs Page
-// Songs Page
 function SongsPage() {
   return (
     <div>
-      <h2>Създаване на песни</h2>
-      <h1>Освободи емоциите си чрез персонализирана музика!</h1>
+      <h2>Songs Creation</h2>
+      <h1>Unleash Your Emotions with Custom Music!</h1>
 
-      <p>🎶 <strong>Какво предлагаме?</strong></p>
-      <p>
-        Създаваме персонализирани песни, вдъхновени от твоите емоции, истории и преживявания. Независимо дали е за специален повод, личен проект или просто искаш да изразиш себе си чрез музика – ние създаваме песни, които говорят направо на сърцето.
-      </p>
+      <p>🎶 <strong>What we offer?</strong></p>
+      <p>We create personalized songs tailored to your emotions, stories, and experiences. Whether it's for a special occasion, a personal project, or simply expressing yourself through music, we craft songs that speak to the heart.</p>
 
-      <p>🔑 <strong>Какво ще получиш?</strong></p>
+      <p>🔑 <strong>What you'll get?</strong></p>
       <ul>
-        <li>Текст и мелодия по поръчка – съобразени с твоето послание или емоция.</li>
-        <li>Висококачествена продукция – от идея до напълно завършена песен.</li>
-        <li>Съвместен творчески процес – работим заедно, за да отразим твоята идентичност.</li>
-        <li>Професионален микс и мастъринг – за чист, балансиран и радио-готов звук.</li>
+        <li>Custom lyrics and melodies: Tailored to your unique message or emotion.</li>
+        <li>High-quality production: From raw ideas to fully produced tracks, we ensure the best quality.</li>
+        <li>Collaborative process: Work closely with us to shape the song in a way that truly reflects you.</li>
+        <li>Professional mixing and mastering: Giving your song a polished and radio-ready sound.</li>
       </ul>
 
-      <p>🌟 <strong>За кого е?</strong></p>
+      <p>🌟 <strong>Who is it for?</strong></p>
       <ul>
-        <li>За хора, които искат да увековечат своите чувства и истории в песен.</li>
-        <li>За артисти, които търсят оригинални тракове, съобразени с тяхната визия.</li>
-        <li>За всеки, който иска уникално и лично музикално преживяване.</li>
+        <li>For individuals looking to immortalize their stories and feelings in a song.</li>
+        <li>For artists seeking custom tracks that align with their vision.</li>
+        <li>For anyone who wants to have a unique and personal musical experience.</li>
       </ul>
 
-      <p>🚀 <strong>Защо да избереш нас?</strong></p>
-      <p>
-        Нашият процес на създаване на музика е внимателен, вдъхновен и напълно насочен към теб. Гарантираме, че песента ти ще бъде уникална, искрена и ще остави трайно впечатление върху всеки, който я чуе.
-      </p>
+      <p>🚀 <strong>Why choose us?</strong></p>
+      <p>Our music creation process not only ensures that your song is crafted with precision and care, but also that it truly resonates with you. With our personalized approach, we guarantee that your song will be one-of-a-kind and will leave a lasting impact on your audience.</p>
 
-      {/* Тук можеш да добавиш форма за контакт или линк за поръчка на песен */}
+      {/* Add additional details or links for signing up for song creation here */}
     </div>
   );
 }
@@ -147,13 +142,32 @@ function SongsPage() {
 export default function App() {
   const [showPayment, setShowPayment] = useState(false);
 
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src =
+      'https://www.paypal.com/sdk/js?client-id=BAAVYiC-srs0QQ7eQzFSPWsDfdJxKxthYO920jVotBhncf-yHaoRwrA_AOdHpsvzPCvCzWsQxa6UzGm5gA&components=hosted-buttons&disable-funding=venmo&currency=EUR';
+    script.async = true;
+    script.onload = () => {
+      if ((window as any).paypal) {
+        (window as any).paypal.HostedButtons({ hostedButtonId: 'YWAHX2FAPX7PA' })
+          .render('#paypal-container');
+      }
+    };
+    document.head.appendChild(script);
+
+    // Cleanup script without returning its node
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   return (
     <Router>
       <div style={container}>
         <div style={missionSection}>
-          <h2>Нашата мисия</h2>
-          <p>Ние създаваме визуални и звукови светове, които карат хората да спрат, да се заслушат и да усетят нещо истинско. Работим в нов ритъм – бърз, прецизен и различен. За нас всяко видео е сцена, всяко парче е изповед, а всяка кампания – движение..</p>
+          <h2>Our Mission</h2>
+          <p>This is not a service. This is a movement. We give upcoming artists access to clean,
+            cinematic promo and visuals — without watering down their style or draining their budget.</p>
         </div>
 
         {services.map(([emoji, hueA, hueB, service, description], i) => (
@@ -179,25 +193,12 @@ export default function App() {
 
         <div id="paypal-container" style={{ marginTop: 80, textAlign: 'center' }} />
 
-        {/* Spotify Player */}
-<div style={{ marginTop: 40, display: 'flex', justifyContent: 'center' }}>
-  <iframe
-    style={{ borderRadius: '12px' }}
-    src="https://open.spotify.com/embed/track/0LFL7IqP2pRrCQ2N1nP9hB"
-    width="100%"
-    height="352"
-    frameBorder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy"
-  ></iframe>
-</div>
-
-        <div style={{ textAlign: 'center', marginTop: 120 }}>
+        <div style={{ textAlign: 'center', marginTop: 40 }}>
           <Link to="/contact" style={{ margin: '0 1rem' }}>Contact</Link>
          
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: 10 }}>
+        <div style={{ textAlign: 'center', marginTop: 40 }}>
          {/* <Link to="/Promo" style={{ margin: '0 1rem' }}>More promo options</Link> */}
 
          
@@ -206,12 +207,13 @@ export default function App() {
 
 
         <div style={{ textAlign: 'center', marginTop: 20, color: '#444' }}>
-          <p>📱 <a href="tel:+359882957008">+359 882 957 008</a></p>
-          <p>▶️ <a href="https://open.spotify.com/track/0LFL7IqP2pRrCQ2N1nP9hB?si=67c8bfd630e5421a" target="_blank" rel="noopener noreferrer">Spotify</a></p>
+          <p>📱 <a href="tel:+359876381932">+359 87 638 1932</a></p>
+          <p>📸 <a href="https://instagram.com/martinantoniorecords" target="_blank" rel="noopener noreferrer">@martinantoniorecords</a></p>
+          <p>▶️ <a href="https://youtube.com/@martinantoniorecords" target="_blank" rel="noopener noreferrer">youtube.com/@martinantoniorecords</a></p>
         </div>
 
         <div style={{ textAlign: 'center', fontSize: 10, color: '#777', marginTop: 40, paddingBottom: 30 }}>
-          
+          By sending this payment you are agreeing to the terms and conditions of this website and of YouTube.
         </div>
       </div>
     </Router>
@@ -265,7 +267,7 @@ const services: [string, number, number, string, string | React.JSX.Element][] =
     "🍅",
     340,
     10,
-    "Музикална продукция",
+    "Music Production",
     <Link to="/SongsPage">
     <>
       
@@ -273,36 +275,36 @@ const services: [string, number, number, string, string | React.JSX.Element][] =
         onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
         style={{ background: 'none', border: 'none', color: '#0070f3', cursor: 'pointer' }}
       >
-        Ние създаваме висококачествени песни, от концепцията до финалният микс.
+        We create high-quality music tracks, from concept to final mix.
       </button>
     </>,
     </Link>
   ],
-  ["🍊", 20, 40, "Уеб дизайн", "Създаваме модерни и въздействащи уебсайтове, които изграждат доверие и превръщат посетителите в клиенти"],
-  ["🎬", 60, 90, "Рекламни видеа", "Кинематографични кадри, които вдъхват живот на твоята реклама"],
+  ["🍊", 20, 40, "Artist Development", "Helping artists find their sound and build their brand."],
+  ["🎬", 60, 90, "Music Videos", "Cinematic visuals to bring your music to life with stunning visuals."],
   [
     "🍋",
     60,
     90,
-    "Онлайн реклама",
+    "Music Promotion",
     <>
       
       <button
         onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
         style={{ background: 'none', border: 'none', color: '#0070f3', cursor: 'pointer' }}
       >
-        Ефективна онлайн реклама, която достига точните хора в точния момент и превръща интереса в резултати.
+        Promoting music through strategic marketing and media placements.
       </button>
     </>,
   ],
-  ["🎶", 100, 200, "Печатна реклама", "Креативна печатна реклама – флаери, постери, визитки, които грабват вниманието и оставят трайно впечатление."],
-  ["🍇", 290, 320, "Брандинг и мърч", "Създаваме уникален брандинг и мърчандайз за артисти."],
-  ["🍐", 80, 120, "Организация на събития", "Организиране на концерти, лайв шоута и музикални събития."],
+  ["🎶", 100, 200, "Remixes", "Giving new life to your tracks with fresh remixes."],
+  ["🍇", 290, 320, "Branding & Merch", "Designing unique branding and merchandise for artists."],
+  ["🍐", 80, 120, "Event Management", "Organizing concerts, live shows, and music events."],
   [
     "🎤",
     0,
     330,
-    "Уроци по пеене",
-    <Link to="/singing-lessons">Индивидуално и групово вокално обучение за артисти на всяко ниво.</Link>,
+    "Singing Lessons",
+    <Link to="/singing-lessons">Private & group vocal coaching for artists at every level</Link>,
   ],
 ];
