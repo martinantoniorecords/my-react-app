@@ -1,5 +1,5 @@
 // App.tsx
-
+import React, { useState, useEffect } from "react";
 import { motion, Variants } from "framer-motion";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { createClient } from '@supabase/supabase-js';
@@ -146,6 +146,25 @@ function SongsPage() {
 // Main App Component
 export default function App() {
   const [showPayment, setShowPayment] = useState(false);
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src =
+      'https://www.paypal.com/sdk/js?client-id=BAAVYiC-srs0QQ7eQzFSPWsDfdJxKxthYO920jVotBhncf-yHaoRwrA_AOdHpsvzPCvCzWsQxa6UzGm5gA&components=hosted-buttons&disable-funding=venmo&currency=EUR';
+    script.async = true;
+    script.onload = () => {
+      if ((window as any).paypal) {
+        (window as any).paypal.HostedButtons({ hostedButtonId: 'LK4XLSFGRWDG2' })
+          .render('#paypal-container');
+      }
+    };
+    document.head.appendChild(script);
+
+    // Cleanup script without returning its node
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
 
   return (
