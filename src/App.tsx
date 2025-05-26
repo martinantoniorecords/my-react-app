@@ -1,5 +1,5 @@
 // App.tsx
-import React, { useState, useEffect } from "react";
+
 import { motion, Variants } from "framer-motion";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { createClient } from '@supabase/supabase-js';
