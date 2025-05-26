@@ -179,18 +179,7 @@ export default function App() {
 
         <div id="paypal-container" style={{ marginTop: 80, textAlign: 'center' }} />
 
-        {/* Spotify Player */}
-<div style={{ marginTop: 40, display: 'flex', justifyContent: 'center' }}>
-  <iframe
-    style={{ borderRadius: '12px' }}
-    src="https://open.spotify.com/embed/track/0LFL7IqP2pRrCQ2N1nP9hB"
-    width="100%"
-    height="352"
-    frameBorder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy"
-  ></iframe>
-</div>
+
 
         <div style={{ textAlign: 'center', marginTop: 120 }}>
           <Link to="/contact" style={{ margin: '0 1rem' }}>Contact</Link>
