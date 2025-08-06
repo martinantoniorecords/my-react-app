@@ -215,7 +215,7 @@ export default function App() {
 
         <div style={{ textAlign: 'center', marginTop: 20, color: '#444' }}>
           <p>📱 <a href="tel:+359882957008">+359 882 957 008</a></p>
-          <p>▶️ <a href="https://open.spotify.com/track/0LFL7IqP2pRrCQ2N1nP9hB?si=67c8bfd630e5421a" target="_blank" rel="noopener noreferrer">Spotify</a></p>
+          <!--  <p>▶️ <a href="https://open.spotify.com/track/0LFL7IqP2pRrCQ2N1nP9hB?si=67c8bfd630e5421a" target="_blank" rel="noopener noreferrer">Spotify</a></p> -->
         </div>
 
         <div style={{ textAlign: 'center', fontSize: 10, color: '#777', marginTop: 40, paddingBottom: 30 }}>
