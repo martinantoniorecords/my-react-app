@@ -214,7 +214,7 @@ export default function App() {
 
 
         <div style={{ textAlign: 'center', marginTop: 20, color: '#444' }}>
-          <p>📱 <a href="tel:+359882957008">+359 882 957 008</a></p>
+          <p>📱 <a href="tel:"></a></p>
           
         </div>
 
