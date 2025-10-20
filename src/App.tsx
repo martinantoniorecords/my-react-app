@@ -214,7 +214,7 @@ export default function App() {
 
 
         <div style={{ textAlign: 'center', marginTop: 20, color: '#444' }}>
-          <p> </p>
+          
           
         </div>
 
