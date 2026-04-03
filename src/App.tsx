@@ -68,42 +68,6 @@ function PaymentPage() {
   );
 }
 
-// AI Solutions Project Page
-function AIProjectsPage() {
-  return (
-    <div>
-      <h2>AI Solutions</h2>
-      <h1>Empower Your Business with Intelligent Automation</h1>
-
-      <p>🎯 <strong>What we offer:</strong></p>
-      <p>
-        We build AI agents, automate complex workflows, and integrate smart solutions into your business ecosystem.
-        From data verification to process orchestration, we provide scalable, reliable AI systems.
-      </p>
-
-      <p>🔑 <strong>Key Benefits:</strong></p>
-      <ul>
-        <li>Automated workflows: Reduce manual tasks and errors with intelligent agents.</li>
-        <li>Data-driven insights: Real-time analysis to make informed decisions.</li>
-        <li>Custom integrations: Connect your existing systems with AI solutions seamlessly.</li>
-        <li>Enhanced user experience: Automate notifications, onboarding, and client interactions.</li>
-      </ul>
-
-      <p>🌟 <strong>Who it's for:</strong></p>
-      <ul>
-        <li>Businesses looking to streamline operations.</li>
-        <li>Startups wanting to deploy AI-powered services quickly.</li>
-        <li>Enterprises aiming for digital transformation and efficiency.</li>
-      </ul>
-
-      <p>🚀 <strong>Why choose us:</strong></p>
-      <p>
-        Our AI solutions are practical, robust, and tailored to your business goals. We combine cutting-edge technology with human expertise to deliver measurable results and long-term scalability.
-      </p>
-    </div>
-  );
-}
-
 // Main App Component
 export default function App() {
   const [showPayment, setShowPayment] = useState(false);
@@ -120,10 +84,7 @@ export default function App() {
       }
     };
     document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
+    return () => { document.head.removeChild(script); };
   }, []);
 
   return (
@@ -131,12 +92,7 @@ export default function App() {
       <div style={container}>
         <div style={missionSection}>
           <h2>Our Mission</h2>
-          <p>
-            Our mission is to design intelligent AI solutions that automate workflows, connect systems, and drive business impact.
-            We create autonomous agents and scalable architectures that allow companies to save time, reduce errors, and unlock new opportunities.
-            Every solution is tailored to the client's unique processes and goals, ensuring measurable results and long-term efficiency.
-            We operate with precision, speed, and creativity — transforming complex problems into actionable, AI-powered solutions.
-          </p>
+          <p>We design AI-powered solutions that help businesses automate processes, optimize workflows, and deliver smarter outcomes.</p>
         </div>
 
         {services.map(([emoji, hueA, hueB, service, description], i) => (
@@ -154,7 +110,6 @@ export default function App() {
 
         <Routes>
           <Route path="/payment" element={<PaymentPage />} />
-          <Route path="/ai-projects" element={<AIProjectsPage />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/Promo" element={<Promo />} />
         </Routes>
@@ -162,16 +117,14 @@ export default function App() {
         <div id="paypal-container" style={{ marginTop: 80, textAlign: 'center' }} />
 
         <div style={{ textAlign: 'center', marginTop: 120 }}>
-          <Link to="/contact" style={{ margin: '0 1rem' }}>Contact</Link>
+          <a href="mailto:info@martitony.com" style={{ margin: '0 1rem', color: '#0070f3' }}>Contact</a>
         </div>
-
-        <div style={{ textAlign: 'center', fontSize: 10, color: '#777', marginTop: 40, paddingBottom: 30 }} />
       </div>
     </Router>
   );
 }
 
-// Card Component
+// Card Component & Helpers
 interface CardProps {
   emoji: string;
   hueA: number;
@@ -197,7 +150,6 @@ function Card({ emoji, hueA, hueB, i, service, description }: CardProps) {
   );
 }
 
-// Variants and Styles
 const cardVariants: Variants = {
   offscreen: { y: 300 },
   onscreen: { y: 50, rotate: -10, transition: { type: "spring", bounce: 0.4, duration: 0.8 } }
@@ -214,14 +166,23 @@ const textStyle = { textAlign: "center", color: "#333", fontSize: "14px", fontWe
 const showPaymentButtonStyle = { padding: "10px 20px", marginTop: "20px", backgroundColor: "#0070f3", color: "white", border: "none", borderRadius: "5px", cursor: "pointer", fontSize: "16px", fontWeight: "bold" } as const;
 const paymentPageContainerStyle = { marginTop: "100px", display: "flex", justifyContent: "center" } as const;
 
-// Services updated for AI Solutions Architect
+// Updated services array
 const services: [string, number, number, string, string | React.JSX.Element][] = [
-  ["🤖", 340, 10, "AI Agents", "Custom AI agents to automate business workflows and verify data."],
-  ["💻", 20, 40, "System Integration", "Connect your apps, databases, and services with smart automation."],
-  ["📊", 60, 90, "Data Analytics", "AI-driven analysis to provide actionable insights and predictive models."],
-  ["⚙️", 60, 90, "Workflow Automation", "Streamline repetitive processes and reduce human errors with AI orchestration."],
-  ["🔐", 100, 200, "Security & Compliance", "Implement AI solutions that respect privacy, compliance, and company policies."],
-  ["🌐", 290, 320, "Cloud & Deployment", "Deploy scalable AI systems on cloud platforms with minimal downtime."],
-  ["📈", 80, 120, "Business Optimization", "Optimize operations and resource allocation with AI-driven decisions."],
-  ["🧑‍💼", 0, 330, "Consulting & Training", <Link to="/ai-projects">Guidance and hands-on training for your team to implement AI solutions.</Link>],
+  [
+    "🍅",
+    340,
+    10,
+    "Book a Demo",
+    <a href="mailto:info@martitony.com">
+      <button style={{ background: 'none', border: 'none', color: '#0070f3', cursor: 'pointer' }}>
+        Book a Demo
+      </button>
+    </a>
+  ],
+  ["🍊", 20, 40, "Web Design", "We create modern, user-friendly websites optimized for engagement and conversions."],
+  ["🎬", 60, 90, "Video Production", "High-quality video content to bring your AI solutions to life."],
+  ["🍋", 60, 90, "Digital Marketing", "Targeted online campaigns that convert leads into customers."],
+  ["🎶", 100, 200, "Print Marketing", "Creative print assets like brochures, posters, and flyers to make a lasting impression."],
+  ["🍇", 290, 320, "Branding & Merch", "Designing unique branding and merchandise for tech and AI projects."],
+  ["🍐", 80, 120, "Event Planning", "Organizing conferences, workshops, and product launch events."],
 ];
