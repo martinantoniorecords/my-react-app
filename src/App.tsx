@@ -8,7 +8,7 @@ import Promo from './promo'; // Assuming you have a Promo.js or Promo.tsx
 // Initialize Supabase client
 const supabase = createClient(
   'https://hdufmrkonhunutzheslt.supabase.co',
-  'sb_publishable_-650KTt51L6eG1U1sFmK3Q_Wi2bifYo'
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhkdWZtcmtvbmh1bnV0emhlc2x0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyMDA3NTIsImV4cCI6MjA5MDc3Njc1Mn0.QiBiTJRFeqpz33z24ejz5kcAhQfUY8OP4EREioFS6-8'
 );
 
 // Contact Form Page
