@@ -1,5 +1,5 @@
 // App.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, Variants } from "framer-motion";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { createClient } from '@supabase/supabase-js';
@@ -80,6 +80,26 @@ function AIProjectsPage() {
         We build AI agents, automate complex workflows, and integrate smart solutions into your business ecosystem.
         From data verification to process orchestration, we provide scalable, reliable AI systems.
       </p>
+
+      <p>🔑 <strong>Key Benefits:</strong></p>
+      <ul>
+        <li>Automated workflows: Reduce manual tasks and errors with intelligent agents.</li>
+        <li>Data-driven insights: Real-time analysis to make informed decisions.</li>
+        <li>Custom integrations: Connect your existing systems with AI solutions seamlessly.</li>
+        <li>Enhanced user experience: Automate notifications, onboarding, and client interactions.</li>
+      </ul>
+
+      <p>🌟 <strong>Who it's for:</strong></p>
+      <ul>
+        <li>Businesses looking to streamline operations.</li>
+        <li>Startups wanting to deploy AI-powered services quickly.</li>
+        <li>Enterprises aiming for digital transformation and efficiency.</li>
+      </ul>
+
+      <p>🚀 <strong>Why choose us:</strong></p>
+      <p>
+        Our AI solutions are practical, robust, and tailored to your business goals. We combine cutting-edge technology with human expertise to deliver measurable results and long-term scalability.
+      </p>
     </div>
   );
 }
@@ -87,6 +107,24 @@ function AIProjectsPage() {
 // Main App Component
 export default function App() {
   const [showPayment, setShowPayment] = useState(false);
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src =
+      'https://www.paypal.com/sdk/js?client-id=BAAVYiC-srs0QQ7eQzFSPWsDfdJxKxthYO920jVotBhncf-yHaoRwrA_AOdHpsvzPCvCzWsQxa6UzGm5gA&components=hosted-buttons&disable-funding=venmo&currency=EUR';
+    script.async = true;
+    script.onload = () => {
+      if ((window as any).paypal) {
+        (window as any).paypal.HostedButtons({ hostedButtonId: 'LK4XLSFGRWDG2' })
+          .render('#paypal-container');
+      }
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   return (
     <Router>
@@ -96,12 +134,23 @@ export default function App() {
           <p>
             Our mission is to design intelligent AI solutions that automate workflows, connect systems, and drive business impact.
             We create autonomous agents and scalable architectures that allow companies to save time, reduce errors, and unlock new opportunities.
+            Every solution is tailored to the client's unique processes and goals, ensuring measurable results and long-term efficiency.
+            We operate with precision, speed, and creativity — transforming complex problems into actionable, AI-powered solutions.
           </p>
         </div>
 
         {services.map(([emoji, hueA, hueB, service, description], i) => (
           <Card key={i} i={i} emoji={emoji} hueA={hueA} hueB={hueB} service={service} description={description} />
         ))}
+
+        <button onClick={() => setShowPayment(true)} style={showPaymentButtonStyle}>
+          Show Payment Page
+        </button>
+        {showPayment && (
+          <div style={paymentPageContainerStyle}>
+            <Link to="/payment">Go to Payment Page</Link>
+          </div>
+        )}
 
         <Routes>
           <Route path="/payment" element={<PaymentPage />} />
@@ -110,9 +159,13 @@ export default function App() {
           <Route path="/Promo" element={<Promo />} />
         </Routes>
 
+        <div id="paypal-container" style={{ marginTop: 80, textAlign: 'center' }} />
+
         <div style={{ textAlign: 'center', marginTop: 120 }}>
-          <a href="mailto:info@martitony.com" style={{ margin: '0 1rem', color: '#0070f3' }}>Contact</a>
+          <Link to="/contact" style={{ margin: '0 1rem' }}>Contact</Link>
         </div>
+
+        <div style={{ textAlign: 'center', fontSize: 10, color: '#777', marginTop: 40, paddingBottom: 30 }} />
       </div>
     </Router>
   );
@@ -154,19 +207,21 @@ const hue = (h: number) => `hsl(${h},100%,50%)`;
 const container = { margin: "100px auto", maxWidth: 500, paddingBottom: 150, width: "100%" } as const;
 const missionSection = { textAlign: "center", marginBottom: 40, padding: "0 20px", color: "#333" } as const;
 const cardContainer = { overflow: "hidden", display: "flex", justifyContent: "center", alignItems: "center", position: "relative", paddingTop: 20, marginBottom: -120 } as const;
-const splash = { position: "absolute", top: 0, left: 0, right: 0, bottom: 0 } as const;
-const card = { fontSize: 164, width: 300, height: 430, display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 20, background: "#f5f5f5", transformOrigin: "10% 60%" } as const;
+const splash = { position: "absolute", top: 0, left: 0, right: 0, bottom: 0, clipPath: `path("M 0 303.5 C 0 292.454 8.995 285.101 20 283.5 L 460 219.5 C 470.085 218.033 480 228.454 480 239.5 L 500 430 C 500 441.046 491.046 450 480 450 L 20 450 C 8.954 450 0 441.046 0 430 Z")` } as const;
+const card = { fontSize: 164, width: 300, height: 430, display: "flex", justifyContent: "center", alignItems: "center", borderRadius: 20, background: "#f5f5f5", boxShadow: "0 0 1px hsl(0deg0%0%/0.075),0 0 2px hsl(0deg0%0%/0.075),0 0 4px hsl(0deg0%0%/0.075),0 0 8px hsl(0deg0%0%/0.075),0 0 16px hsl(0deg0%0%/0.075)", transformOrigin: "10% 60%" } as const;
 const emojiStyle = { fontSize: "100px", marginBottom: "20px" } as const;
 const textStyle = { textAlign: "center", color: "#333", fontSize: "14px", fontWeight: "bold" } as const;
+const showPaymentButtonStyle = { padding: "10px 20px", marginTop: "20px", backgroundColor: "#0070f3", color: "white", border: "none", borderRadius: "5px", cursor: "pointer", fontSize: "16px", fontWeight: "bold" } as const;
+const paymentPageContainerStyle = { marginTop: "100px", display: "flex", justifyContent: "center" } as const;
 
-// AI Services
+// Services updated for AI Solutions Architect
 const services: [string, number, number, string, string | React.JSX.Element][] = [
-  ["🤖", 340, 10, "AI Agents", "Custom AI agents to automate business workflows."],
-  ["💻", 20, 40, "System Integration", "Connect apps and systems with smart automation."],
-  ["📊", 60, 90, "Data Analytics", "AI-driven insights and predictive models."],
-  ["⚙️", 60, 90, "Workflow Automation", "Streamline repetitive processes using AI."],
-  ["🔐", 100, 200, "Security & Compliance", "Implement solutions respecting privacy and policies."],
-  ["🌐", 290, 320, "Cloud & Deployment", "Deploy scalable AI systems on cloud platforms."],
-  ["📈", 80, 120, "Business Optimization", "Optimize operations and resource allocation."],
-  ["🧑‍💼", 0, 330, "Consulting & Training", <Link to="/ai-projects">Guidance and hands-on training for your team.</Link>],
+  ["🤖", 340, 10, "AI Agents", "Custom AI agents to automate business workflows and verify data."],
+  ["💻", 20, 40, "System Integration", "Connect your apps, databases, and services with smart automation."],
+  ["📊", 60, 90, "Data Analytics", "AI-driven analysis to provide actionable insights and predictive models."],
+  ["⚙️", 60, 90, "Workflow Automation", "Streamline repetitive processes and reduce human errors with AI orchestration."],
+  ["🔐", 100, 200, "Security & Compliance", "Implement AI solutions that respect privacy, compliance, and company policies."],
+  ["🌐", 290, 320, "Cloud & Deployment", "Deploy scalable AI systems on cloud platforms with minimal downtime."],
+  ["📈", 80, 120, "Business Optimization", "Optimize operations and resource allocation with AI-driven decisions."],
+  ["🧑‍💼", 0, 330, "Consulting & Training", <Link to="/ai-projects">Guidance and hands-on training for your team to implement AI solutions.</Link>],
 ];
