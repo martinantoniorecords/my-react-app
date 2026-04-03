@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { createClient } from '@supabase/supabase-js';
 import Promo from './promo'; // Assuming you have a Promo.js or Promo.tsx
 
-
-
 // Initialize Supabase client
 const supabase = createClient(
   'https://sneynasuzdckcnimehdd.supabase.co',
@@ -41,11 +39,11 @@ function ContactForm() {
 
   return (
     <div style={{ maxWidth: 480, margin: '2rem auto', padding: '1rem' }}>
-      <h2>Контакти</h2>
+      <h2>Contact</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input name="name" placeholder="Име" required className="w-full p-2 border rounded" />
-        <input name="email" type="email" placeholder="Имейл" required className="w-full p-2 border rounded" />
-        <textarea name="message" placeholder="Съобщение" required className="w-full p-2 border rounded" />
+        <input name="name" placeholder="Name" required className="w-full p-2 border rounded" />
+        <input name="email" type="email" placeholder="Email" required className="w-full p-2 border rounded" />
+        <textarea name="message" placeholder="Message" required className="w-full p-2 border rounded" />
         <button
           type="submit"
           className="bg-green-600 text-white px-4 py-2 rounded"
@@ -53,8 +51,8 @@ function ContactForm() {
         >
           {status === 'sending' ? 'Sending...' : 'Send Message'}
         </button>
-        {status === 'sent' && <p className="text-green-500">Съобщение изпратено! 🚀</p>}
-        {status === 'error' && <p className="text-red-500">Грешка при пращане. Опитай отново.</p>}
+        {status === 'sent' && <p className="text-green-500">Message sent! 🚀</p>}
+        {status === 'error' && <p className="text-red-500">Error sending message. Try again.</p>}
       </form>
     </div>
   );
@@ -70,78 +68,41 @@ function PaymentPage() {
   );
 }
 
-// Singing Lessons Page
-function SingingLessonsPage() {
+// AI Solutions Project Page
+function AIProjectsPage() {
   return (
     <div>
-      <h2>Singing Lessons</h2>
-      <p><h1>Уроци по пеене – Разкрийте своята истинска вокална сила!</h1>
+      <h2>AI Solutions</h2>
+      <h1>Empower Your Business with Intelligent Automation</h1>
 
-<p>🎤 <strong>Какво предлагаме?</strong></p>
-<p>Ние предлагаме индивидуални и групови уроци по пеене за начинаещи и напреднали певци. Независимо дали искате да подобрите техниката си, да изградите сценично присъствие или да развиете музикалния си слух, нашите уроци ще ви помогнат да постигнете целите си.</p>
+      <p>🎯 <strong>What we offer:</strong></p>
+      <p>
+        We build AI agents, automate complex workflows, and integrate smart solutions into your business ecosystem.
+        From data verification to process orchestration, we provide scalable, reliable AI systems.
+      </p>
 
-<p>🔑 <strong>Какво ще научите?</strong></p>
-<ul>
-  <li>Основи на вокалната техника: правилно дишане, контрол на гласа и развитие на диапазона.</li>
-  <li>Музикален слух и интонация: как да разпознавате и изпълнявате нотите безпогрешно.</li>
-  <li>Сценично поведение: как да излъчвате увереност и да се свързвате с публиката.</li>
-  <li>Персонализиран подход: уроците са напълно адаптирани към вашето ниво и стил.</li>
-</ul>
+      <p>🔑 <strong>Key Benefits:</strong></p>
+      <ul>
+        <li>Automated workflows: Reduce manual tasks and errors with intelligent agents.</li>
+        <li>Data-driven insights: Real-time analysis to make informed decisions.</li>
+        <li>Custom integrations: Connect your existing systems with AI solutions seamlessly.</li>
+        <li>Enhanced user experience: Automate notifications, onboarding, and client interactions.</li>
+      </ul>
 
-<p>🌟 <strong>За кого са подходящи?</strong></p>
-<ul>
-  <li>За начинаещи, които искат да започнат да пеят.</li>
-  <li>За напреднали певци, които искат да усъвършенстват своите умения.</li>
-  <li>За любители на музиката, които търсят начини да се изразяват по най-добрия начин.</li>
-</ul>
+      <p>🌟 <strong>Who it's for:</strong></p>
+      <ul>
+        <li>Businesses looking to streamline operations.</li>
+        <li>Startups wanting to deploy AI-powered services quickly.</li>
+        <li>Enterprises aiming for digital transformation and efficiency.</li>
+      </ul>
 
-<p>🚀 <strong>Защо да изберете нас?</strong></p>
-<p>Нашите уроци не само ще ви помогнат да развиете вокалните си способности, но ще ви вдъхновят да се изразявате през музиката. Възможността за индивидуални уроци гарантира, че всеки ученик получава нужното внимание и подкрепа, за да напредва бързо и ефективно.</p>
-</p>
-      {/* Add additional details or links for signing up for lessons here */}
+      <p>🚀 <strong>Why choose us:</strong></p>
+      <p>
+        Our AI solutions are practical, robust, and tailored to your business goals. We combine cutting-edge technology with human expertise to deliver measurable results and long-term scalability.
+      </p>
     </div>
   );
 }
-
-// Songs Page
-// Songs Page
-function SongsPage() {
-  return (
-    <div>
-      <h2>Създаване на песни</h2>
-      <h1>Освободи емоциите си чрез персонализирана музика!</h1>
-
-      <p>🎶 <strong>Какво предлагаме?</strong></p>
-      <p>
-        Създаваме персонализирани песни, вдъхновени от твоите емоции, истории и преживявания. Независимо дали е за специален повод, личен проект или просто искаш да изразиш себе си чрез музика – ние създаваме песни, които говорят направо на сърцето.
-      </p>
-
-      <p>🔑 <strong>Какво ще получиш?</strong></p>
-      <ul>
-        <li>Текст и мелодия по поръчка – съобразени с твоето послание или емоция.</li>
-        <li>Висококачествена продукция – от идея до напълно завършена песен.</li>
-        <li>Съвместен творчески процес – работим заедно, за да отразим твоята идентичност.</li>
-        <li>Професионален микс и мастъринг – за чист, балансиран и радио-готов звук.</li>
-      </ul>
-
-      <p>🌟 <strong>За кого е?</strong></p>
-      <ul>
-        <li>За хора, които искат да увековечат своите чувства и истории в песен.</li>
-        <li>За артисти, които търсят оригинални тракове, съобразени с тяхната визия.</li>
-        <li>За всеки, който иска уникално и лично музикално преживяване.</li>
-      </ul>
-
-      <p>🚀 <strong>Защо да избереш нас?</strong></p>
-      <p>
-        Нашият процес на създаване на музика е внимателен, вдъхновен и напълно насочен към теб. Гарантираме, че песента ти ще бъде уникална, искрена и ще остави трайно впечатление върху всеки, който я чуе.
-      </p>
-
-      {/* Тук можеш да добавиш форма за контакт или линк за поръчка на песен */}
-    </div>
-  );
-}
-
-
 
 // Main App Component
 export default function App() {
@@ -160,19 +121,22 @@ export default function App() {
     };
     document.head.appendChild(script);
 
-    // Cleanup script without returning its node
     return () => {
       document.head.removeChild(script);
     };
   }, []);
 
-
   return (
     <Router>
       <div style={container}>
         <div style={missionSection}>
-          <h2>Нашата мисия</h2>
-          <p>Ние създаваме визуални и звукови светове, които карат хората да спрат, да се заслушат и да усетят нещо истинско. Работим в нов ритъм – бърз, прецизен и различен. За нас всяко видео е сцена, всяко парче е изповед, а всяка кампания – движение..</p>
+          <h2>Our Mission</h2>
+          <p>
+            Our mission is to design intelligent AI solutions that automate workflows, connect systems, and drive business impact.
+            We create autonomous agents and scalable architectures that allow companies to save time, reduce errors, and unlock new opportunities.
+            Every solution is tailored to the client's unique processes and goals, ensuring measurable results and long-term efficiency.
+            We operate with precision, speed, and creativity — transforming complex problems into actionable, AI-powered solutions.
+          </p>
         </div>
 
         {services.map(([emoji, hueA, hueB, service, description], i) => (
@@ -190,43 +154,24 @@ export default function App() {
 
         <Routes>
           <Route path="/payment" element={<PaymentPage />} />
-          <Route path="/singing-lessons" element={<SingingLessonsPage />} />
-          <Route path="/SongsPage" element={<SongsPage />} />
+          <Route path="/ai-projects" element={<AIProjectsPage />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/Promo" element={<Promo />} />
         </Routes>
 
         <div id="paypal-container" style={{ marginTop: 80, textAlign: 'center' }} />
 
-
-
         <div style={{ textAlign: 'center', marginTop: 120 }}>
           <Link to="/contact" style={{ margin: '0 1rem' }}>Contact</Link>
-         
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: 10 }}>
-         {/* <Link to="/Promo" style={{ margin: '0 1rem' }}>More promo options</Link> */}
-
-         
-        </div>
-
-
-
-        <div style={{ textAlign: 'center', marginTop: 20, color: '#444' }}>
-          
-          
-        </div>
-
-        <div style={{ textAlign: 'center', fontSize: 10, color: '#777', marginTop: 40, paddingBottom: 30 }}>
-          
-        </div>
+        <div style={{ textAlign: 'center', fontSize: 10, color: '#777', marginTop: 40, paddingBottom: 30 }} />
       </div>
     </Router>
   );
 }
 
-// Card Component & Helpers (unchanged)
+// Card Component
 interface CardProps {
   emoji: string;
   hueA: number;
@@ -252,6 +197,7 @@ function Card({ emoji, hueA, hueB, i, service, description }: CardProps) {
   );
 }
 
+// Variants and Styles
 const cardVariants: Variants = {
   offscreen: { y: 300 },
   onscreen: { y: 50, rotate: -10, transition: { type: "spring", bounce: 0.4, duration: 0.8 } }
@@ -268,49 +214,14 @@ const textStyle = { textAlign: "center", color: "#333", fontSize: "14px", fontWe
 const showPaymentButtonStyle = { padding: "10px 20px", marginTop: "20px", backgroundColor: "#0070f3", color: "white", border: "none", borderRadius: "5px", cursor: "pointer", fontSize: "16px", fontWeight: "bold" } as const;
 const paymentPageContainerStyle = { marginTop: "100px", display: "flex", justifyContent: "center" } as const;
 
+// Services updated for AI Solutions Architect
 const services: [string, number, number, string, string | React.JSX.Element][] = [
-  [
-    "🍅",
-    340,
-    10,
-    "Музикална продукция",
-    <Link to="/SongsPage">
-    <>
-      
-      <button
-        onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
-        style={{ background: 'none', border: 'none', color: '#0070f3', cursor: 'pointer' }}
-      >
-        Ние създаваме висококачествени песни, от концепцията до финалният микс.
-      </button>
-    </>,
-    </Link>
-  ],
-  ["🍊", 20, 40, "Уеб дизайн", "Създаваме модерни и въздействащи уебсайтове, които изграждат доверие и превръщат посетителите в клиенти"],
-  ["🎬", 60, 90, "Рекламни видеа", "Кинематографични кадри, които вдъхват живот на твоята реклама"],
-  [
-    "🍋",
-    60,
-    90,
-    "Онлайн реклама",
-    <>
-      
-      <button
-        onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
-        style={{ background: 'none', border: 'none', color: '#0070f3', cursor: 'pointer' }}
-      >
-        Ефективна онлайн реклама, която достига точните хора в точния момент и превръща интереса в резултати.
-      </button>
-    </>,
-  ],
-  ["🎶", 100, 200, "Печатна реклама", "Креативна печатна реклама – флаери, постери, визитки, които грабват вниманието и оставят трайно впечатление."],
-  ["🍇", 290, 320, "Брандинг и мърч", "Създаваме уникален брандинг и мърчандайз за артисти."],
-  ["🍐", 80, 120, "Организация на събития", "Организиране на концерти, лайв шоута и музикални събития."],
-  [
-    "🎤",
-    0,
-    330,
-    "Уроци по пеене",
-    <Link to="/singing-lessons">Индивидуално и групово вокално обучение за артисти на всяко ниво.</Link>,
-  ],
+  ["🤖", 340, 10, "AI Agents", "Custom AI agents to automate business workflows and verify data."],
+  ["💻", 20, 40, "System Integration", "Connect your apps, databases, and services with smart automation."],
+  ["📊", 60, 90, "Data Analytics", "AI-driven analysis to provide actionable insights and predictive models."],
+  ["⚙️", 60, 90, "Workflow Automation", "Streamline repetitive processes and reduce human errors with AI orchestration."],
+  ["🔐", 100, 200, "Security & Compliance", "Implement AI solutions that respect privacy, compliance, and company policies."],
+  ["🌐", 290, 320, "Cloud & Deployment", "Deploy scalable AI systems on cloud platforms with minimal downtime."],
+  ["📈", 80, 120, "Business Optimization", "Optimize operations and resource allocation with AI-driven decisions."],
+  ["🧑‍💼", 0, 330, "Consulting & Training", <Link to="/ai-projects">Guidance and hands-on training for your team to implement AI solutions.</Link>],
 ];
