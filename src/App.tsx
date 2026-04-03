@@ -115,7 +115,7 @@ export default function App() {
     script.async = true;
     script.onload = () => {
       if ((window as any).paypal) {
-        (window as any).paypal.HostedButtons({ hostedButtonId: 'LK4XLSFGRWDG2' })
+        (window as any).paypal.HostedButtons({ hostedButtonId: 'ZLBZG4YNNYG7Q' })
           .render('#paypal-container');
       }
     };
